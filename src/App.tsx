@@ -310,20 +310,41 @@ const RegistrationForm = () => {
     
     setIsSubmitting(true);
     
+    const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_URL;
+
     try {
-      const response = await fetch('/api/register', {
+      // 1. Log to our internal API (works in AI Studio / Full-stack)
+      fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
-      });
-      
-      if (response.ok) {
-        setIsSubmitted(true);
+      }).catch(() => {});
+
+      // 2. Send to Google Sheets
+      if (GOOGLE_SHEET_URL) {
+        // Using URLSearchParams is often more reliable for Google Apps Script with no-cors
+        const params = new URLSearchParams();
+        params.append('fullName', formData.fullName);
+        params.append('phone', formData.phone);
+        params.append('email', formData.email || '');
+        params.append('birthYear', formData.birthYear || '');
+        params.append('need', formData.need);
+        params.append('timestamp', new Date().toLocaleString('vi-VN'));
+
+        await fetch(GOOGLE_SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: params.toString()
+        });
+        console.log("Request sent to Google Sheets");
       } else {
-        const result = await response.json();
-        console.error('Server error:', result);
-        setIsSubmitted(true);
+        console.error("VITE_GOOGLE_SHEET_URL is missing!");
       }
+      
+      setIsSubmitted(true);
     } catch (error) {
       console.error('Submission error:', error);
       setIsSubmitted(true);
