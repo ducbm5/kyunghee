@@ -126,7 +126,7 @@ const Hero = () => {
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/90 via-brand-primary/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/70 via-brand-primary/20 to-transparent"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
