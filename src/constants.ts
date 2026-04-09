@@ -1,6 +1,6 @@
 export const LOGO_URL = "https://drive.google.com/thumbnail?id=1eLgGrvbXpBK7LBIIfmfnk6kV6G8_IPBH&sz=w500";
 
-export const COVER_IMAGE = "https://drive.google.com/thumbnail?id=178-6VotJEIq168qy4LL0AAScRsbJmPlE&sz=w1600";
+export const COVER_IMAGE = "https://drive.google.com/thumbnail?id=1dAE5kS7Fnqc2hDW8MP2ee8ueIZh0XJ4P&sz=w1600";
 
 export const SLIDES = [
   "https://drive.google.com/thumbnail?id=1-shTfEsNTKT-lN_oplB7yVqihd0_tTSA&sz=w1600", // Slide 1
