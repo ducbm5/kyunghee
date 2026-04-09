@@ -5,8 +5,9 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", serif;
   
-  --color-brand-blue: #1e3a8a;
-  --color-brand-gold: #b45309;
+  --color-brand-primary: #7B4B94;
+  --color-brand-secondary: #E1D5E7;
+  --color-brand-accent: #9D76B1;
 }
 
 @layer base {
